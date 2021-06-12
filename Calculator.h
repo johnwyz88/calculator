@@ -2,8 +2,8 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#ifndef CALCULATOR_CALCULATOR_H
-#define CALCULATOR_CALCULATOR_H
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
 
 #include <string>
 #include "tokenizer/Tokenizer.h"
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //CALCULATOR_CALCULATOR_H
+#endif //CALCULATOR_H

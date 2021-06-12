@@ -2,16 +2,15 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#ifndef CALCULATOR_OPERATOR_H
-#define CALCULATOR_OPERATOR_H
-
-
-#include "Context.h"
+#ifndef OPERATOR_H
+#define OPERATOR_H
 
 class Operator {
 public:
-    virtual bool evaluate(Context* context) {};
+    Operator() = default;
+    virtual double evaluate() const {};
+    virtual int getPrecedence() const {};
 };
 
 
-#endif //CALCULATOR_OPERATOR_H
+#endif //OPERATOR_H

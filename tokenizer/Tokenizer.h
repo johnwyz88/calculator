@@ -2,8 +2,8 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#ifndef CALCULATOR_TOKENIZER_H
-#define CALCULATOR_TOKENIZER_H
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
 
 
 #include <string>
@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif //CALCULATOR_TOKENIZER_H
+#endif //TOKENIZER_H

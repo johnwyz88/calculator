@@ -2,8 +2,8 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#ifndef CALCULATOR_TOKEN_H
-#define CALCULATOR_TOKEN_H
+#ifndef TOKEN_H
+#define TOKEN_H
 
 #include <string>
 
@@ -20,4 +20,4 @@ struct Token {
 };
 
 
-#endif //CALCULATOR_TOKEN_H
+#endif //TOKEN_H

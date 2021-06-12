@@ -1,22 +1,25 @@
 //
 // Created by Wang, John on 2021-06-12.
 //
+#ifndef MULTIPLY_OPERATOR_H
+#define MULTIPLY_OPERATOR_H
 
-#ifndef CALCULATOR_OPERATOR_H
-#define CALCULATOR_OPERATOR_H
+#include "Operator.h"
 
-
-#include "Context.h"
-
-class MultiplyOperator {
+class MultiplyOperator : public Operator {
 public:
-    MultiplyOperator()
-    bool evaluate(Context* context) {
-
+    MultiplyOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
+        : left(std::move(left)), right(std::move(right)), precedence(precedence) {}
+    double evaluate() const {
+        return left->evaluate() * right->evaluate();
+    }
+    int getPrecedence() const {
+        return precedence;
     }
 private:
-    Token left, right;
+    std::unique_ptr<Operator> left, right;
+    int precedence;
 };
 
 
-#endif //CALCULATOR_OPERATOR_H
+#endif //MULTIPLY_OPERATOR_H

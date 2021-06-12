@@ -2,8 +2,8 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#ifndef CALCULATOR_OPERATORREGISTRY_H
-#define CALCULATOR_OPERATORREGISTRY_H
+#ifndef OPERATOR_REGISTRY_H
+#define OPERATOR_REGISTRY_H
 
 #include <string>
 #include <unordered_map>
@@ -21,20 +21,4 @@ private:
 
 };
 
-std::unordered_map<std::string, int> OperatorRegistry::precedence = {
-        { "(", 1 },
-        { ")", 1 },
-        { "*", 3 },
-        { "/", 3 },
-        { "%", 3 },
-        { "+", 4 },
-        { "-", 4 },
-        { "&", 8 },
-        { "^", 9 },
-        { "!", 9 },
-        { "|", 10 },
-        { "&&", 11 },
-        { "||", 12 }
-};
-
-#endif //CALCULATOR_OPERATORREGISTRY_H
+#endif //OPERATOR_REGISTRY_H
