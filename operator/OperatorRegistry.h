@@ -8,29 +8,31 @@
 #include <string>
 #include <unordered_map>
 
-namespace Calculator {
-
 class OperatorRegistry {
 public:
-    static int OperatorRegistry::getPrecedence(const std::string& op) {
-        return operators[op];
+    static int getPrecedence(const std::string& op) {
+        return precedence[op];
+    }
+    static bool isOperator(const std::string& op) {
+        return precedence.find(op) != precedence.end();
     }
 private:
-    static std::unordered_map<std::string, int> operators = {
-            { "*", 3 },
-            { "/", 3 },
-            { "%", 3 },
-            { "+", 4 },
-            { "-", 4 },
-            { "&", 8 },
-            { "^", 9 },
-            { "|", 10 },
-            { "&&", 11 },
-            { "||", 12 }
-    }
+    static std::unordered_map<std::string, int> precedence;
+
 };
 
-}
-
+std::unordered_map<std::string, int> OperatorRegistry::precedence = {
+        { "*", 3 },
+        { "/", 3 },
+        { "%", 3 },
+        { "+", 4 },
+        { "-", 4 },
+        { "&", 8 },
+        { "^", 9 },
+        { "!", 9 },
+        { "|", 10 },
+        { "&&", 11 },
+        { "||", 12 }
+};
 
 #endif //CALCULATOR_OPERATORREGISTRY_H

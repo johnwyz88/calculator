@@ -8,9 +8,14 @@
 
 #include "Context.h"
 
-class Operator {
+class MultiplyOperator {
 public:
-    virtual bool evaluate(Context* context) {};
+    MultiplyOperator()
+    bool evaluate(Context* context) {
+
+    }
+private:
+    Token left, right;
 };
 
 

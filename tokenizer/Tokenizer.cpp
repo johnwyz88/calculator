@@ -3,9 +3,13 @@
 //
 
 #include <vector>
-#include "Tokenizer.h"
+#include <iostream>
+#include <sstream>
 
-std::vector<std::string> Tokenizer::tokenize(const std::string& input) {
-    std::vector<std::string> result = {};
+#include "Tokenizer.h"
+#include "../operator/OperatorRegistry.h"
+
+std::vector<Token> Tokenizer::tokenize(const std::string& input) {
+    std::vector<Token> result;
     return result;
 }

@@ -7,10 +7,11 @@
 
 
 #include <string>
+#include "Token.h"
 
 class Tokenizer {
 public:
-    std::vector<std::string> tokenize(const std::string& input);
+    std::vector<Token> tokenize(const std::string& input);
 };
 
 

@@ -8,11 +8,12 @@
 
 #include <vector>
 #include "../operator/Operator.h"
+#include "../tokenizer/Token.h"
 
 class Parser {
 
 public:
-    Operator parse(const std::vector<std::string>& vector);
+    Operator parse(const std::vector<Token>& vector);
 };
 
 

@@ -1,13 +1,20 @@
 #include <gtest/gtest.h>
 #include "Calculator.h"
 
-// Demonstrate some basic assertions.
 TEST(CalculatorTest, BasicArithmetic) {
     Calculator e;
     EXPECT_EQ(e.evaluate("7 * 6"), 42);
     EXPECT_EQ(e.evaluate("7 + 6"), 13);
     EXPECT_EQ(e.evaluate("7 - 6"), 1);
     EXPECT_EQ(e.evaluate("7 / 6"), 1.16666666667);
+}
+
+TEST(CalculatorTest, DISABLED_BasicArithmeticNoSpace) {
+    Calculator e;
+    EXPECT_EQ(e.evaluate("7* 6"), 42);
+    EXPECT_EQ(e.evaluate("7 +6"), 13);
+    EXPECT_EQ(e.evaluate("7-6"), 1);
+    EXPECT_EQ(e.evaluate("7/6"), 1.16666666667);
 }
 
 TEST(CalculatorTest, DISABLED_AdvancedArithmetic) {
