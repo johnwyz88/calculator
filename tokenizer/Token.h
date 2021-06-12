@@ -9,23 +9,14 @@
 
 enum TokenType {
     VALUE,
-    EXPRESSION
-};
-
-union TokenValue {
-    std::string expression;
-    double value;
-
-    TokenValue() {}
-    TokenValue(const std::string& expression) : expression(expression) {}
-    TokenValue(double value) : value(value) {}
-
-    ~TokenValue() {}
+    OPERATOR
 };
 
 struct Token {
+    Token(TokenType type, const std::string &value) : type(type), value(value) {}
+
     TokenType type;
-    TokenValue value;
+    std::string value;
 };
 
 

@@ -22,6 +22,8 @@ private:
 };
 
 std::unordered_map<std::string, int> OperatorRegistry::precedence = {
+        { "(", 1 },
+        { ")", 1 },
         { "*", 3 },
         { "/", 3 },
         { "%", 3 },
