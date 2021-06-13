@@ -23,6 +23,17 @@ std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     for (int i = 0; i < input.size(); i++) {
         if (input[i].type == TokenType::VALUE) {
             values.push(std::make_unique<ValueOperator>(input[i].value));
+        } else if (input[i].value == "(") {
+            int open = 1;
+            int j = i + 1;
+            for (; j < input.size(); j++) {
+                if (input[j].value == "(") open++;
+                else if (input[j].value == ")") open--;
+                if (open == 0) break;
+            }
+            std::vector<Token> sublist(&input[i+1], &input[j]);
+            values.push(std::move(parse(sublist)));
+            i = j;
         } else {
             Token next = input[i];
             int precedence = OperatorRegistry::getPrecedence(next.value);
@@ -100,10 +111,15 @@ void Parser::resolve(std::stack<Token>* operators,
 void Parser::resolveBinary(std::stack<Token>* operators,
                            std::stack<std::unique_ptr<Operator>>* values,
                            std::function<std::unique_ptr<Operator>(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right)> func) {
+    if (values->empty()) throw std::runtime_error("Parse failed.");
     std::unique_ptr<Operator> rightValue = std::move(values->top());
     values->pop();
-    std::unique_ptr<Operator> leftValue = std::move(values->top());
-    values->pop();
+    std::unique_ptr<Operator> leftValue;
+    if (values->empty()) leftValue = std::make_unique<ValueOperator>("0");
+    else {
+        leftValue = std::move(values->top());
+        values->pop();
+    }
     values->push(func(std::move(leftValue), std::move(rightValue)));
 }
 
