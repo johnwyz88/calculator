@@ -20,5 +20,6 @@ std::unordered_map<std::string, int> OperatorRegistry::precedence = {
         { "!", 9 },
         { "|", 10 },
         { "&&", 11 },
-        { "||", 12 }
+        { "||", 12 },
+        { "=", 14}
 };

@@ -30,6 +30,6 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
         EXCLUDE_FROM_ALL)
 
 # Now simply link against gtest or gtest_main as needed. Eg
-add_executable(calculator operator/OperatorRegistry.h operator/OperatorRegistry.cpp Calculator.cpp Calculator.h CalculatorTest.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h operator/Operator.h parser/Parser.cpp parser/Parser.h evaluator/Evaluator.cpp evaluator/Evaluator.h tokenizer/Token.h)
+add_executable(calculator operator/OperatorRegistry.h operator/OperatorRegistry.cpp Calculator.cpp Calculator.h CalculatorTest.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h operator/Operator.h parser/Parser.cpp parser/Parser.h evaluator/Evaluator.cpp evaluator/Evaluator.h tokenizer/Token.h evaluator/EvaluationContext.h operator/Value.h)
 target_link_libraries(calculator gtest_main)
 add_test(NAME CalculatorTest COMMAND calculator)

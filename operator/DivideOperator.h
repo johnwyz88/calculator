@@ -10,8 +10,8 @@ class DivideOperator : public Operator {
 public:
     DivideOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
         : left(std::move(left)), right(std::move(right)), precedence(precedence) {}
-    double evaluate() const {
-        return left->evaluate() / right->evaluate();
+    Value evaluate(EvaluationContext* context) const {
+        return { left->evaluate(context).doubleVal / right->evaluate(context).doubleVal };
     }
     int getPrecedence() const {
         return precedence;

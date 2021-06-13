@@ -10,8 +10,8 @@ class NotOperator : public Operator {
 public:
     NotOperator(std::unique_ptr<Operator> arg, int precedence)
         : arg(std::move(arg)), precedence(precedence) {}
-    double evaluate() const {
-        return !((bool) arg->evaluate());
+    Value evaluate(EvaluationContext* context) const {
+        return { (double) !((bool) arg->evaluate(nullptr).doubleVal) };
     }
     int getPrecedence() const {
         return precedence;

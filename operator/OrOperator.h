@@ -10,8 +10,8 @@ class OrOperator : public Operator {
 public:
     OrOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
         : left(std::move(left)), right(std::move(right)), precedence(precedence) {}
-    double evaluate() const {
-        return ((bool) left->evaluate()) || ((bool) right->evaluate());
+    Value evaluate(EvaluationContext* context) const {
+        return { (double) (((bool) left->evaluate(context).doubleVal) || ((bool) right->evaluate(context).doubleVal)) };
     }
     int getPrecedence() const {
         return precedence;

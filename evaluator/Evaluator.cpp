@@ -5,5 +5,6 @@
 #include "Evaluator.h"
 
 double Evaluator::evaluate(const Operator& op) {
-    return op.evaluate();
+    EvaluationContext context;
+    return op.evaluate(&context).doubleVal;
 }

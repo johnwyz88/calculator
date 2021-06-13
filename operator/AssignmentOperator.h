@@ -1,17 +1,18 @@
 //
 // Created by Wang, John on 2021-06-12.
 //
-#ifndef ADD_OPERATOR_H
-#define ADD_OPERATOR_H
+#ifndef ASSIGNMENT_OPERATOR_H
+#define ASSIGNMENT_OPERATOR_H
 
 #include "Operator.h"
 
-class AddOperator : public Operator {
+class AssignmentOperator : public Operator {
 public:
-    AddOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
+    AssignmentOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
         : left(std::move(left)), right(std::move(right)), precedence(precedence) {}
     Value evaluate(EvaluationContext* context) const {
-        return { left->evaluate(context).doubleVal + right->evaluate(context).doubleVal };
+        double val = right->evaluate();
+        context.registerVariable(left->evaluate().stringVal, val);
     }
     int getPrecedence() const {
         return precedence;
@@ -22,4 +23,4 @@ private:
 };
 
 
-#endif //ADD_OPERATOR_H
+#endif //ASSIGNMENT_OPERATOR_H

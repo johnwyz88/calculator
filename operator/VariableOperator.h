@@ -1,12 +1,12 @@
 //
 // Created by Wang, John on 2021-06-12.
 //
-#ifndef VALUE_OPERATOR_H
-#define VALUE_OPERATOR_H
+#ifndef VARIABLE_OPERATOR_H
+#define VARIABLE_OPERATOR_H
 
-class ValueOperator : public Operator {
+class VariableOperator : public Operator {
 public:
-    ValueOperator(const std::string& value) : value({stod(value)}) {}
+    VariableOperator(const std::string& value) : value(value) {}
     Value evaluate(EvaluationContext* context) const {
         return value;
     }
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //VALUE_OPERATOR_H
+#endif //VARIABLE_OPERATOR_H

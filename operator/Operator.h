@@ -5,10 +5,13 @@
 #ifndef OPERATOR_H
 #define OPERATOR_H
 
+#include "../evaluator/EvaluationContext.h"
+#include "Value.h"
+
 class Operator {
 public:
     Operator() = default;
-    virtual double evaluate() const {};
+    virtual Value evaluate(EvaluationContext* context) const {};
     virtual int getPrecedence() const {};
 };
 

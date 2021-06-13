@@ -98,6 +98,12 @@ void Parser::resolve(std::stack<Token>* operators,
                               return std::make_unique<OrOperator>(std::move(left), std::move(right), precedence);
                           });
 
+        } else if (next.value == "=") {
+            resolveBinary(operators, values,
+                          [precedence](std::unique_ptr<Operator> left, std::unique_ptr<Operator> right) {
+                              return std::make_unique<OrOperator>(std::move(left), std::move(right), precedence);
+                          });
+
         } else if (next.value == "^" || next.value == "!") {
             resolveUnary(operators, values,
                           [precedence](std::unique_ptr<Operator> arg) {
