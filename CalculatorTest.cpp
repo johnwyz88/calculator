@@ -6,7 +6,8 @@ TEST(CalculatorTest, BasicArithmetic) {
     EXPECT_EQ(e.evaluate("7 * 6"), 42);
     EXPECT_EQ(e.evaluate("7 + 6"), 13);
     EXPECT_EQ(e.evaluate("7 - 6"), 1);
-    EXPECT_EQ(e.evaluate("7 / 6"), 1.16666666667);
+    EXPECT_EQ(e.evaluate("7 % 6"), 1);
+    EXPECT_NEAR(e.evaluate("7 / 6"), 1.16667, 0.0001);
 }
 
 TEST(CalculatorTest, BasicArithmeticNoSpace) {
@@ -14,7 +15,8 @@ TEST(CalculatorTest, BasicArithmeticNoSpace) {
     EXPECT_EQ(e.evaluate("7* 6"), 42);
     EXPECT_EQ(e.evaluate("7 +6"), 13);
     EXPECT_EQ(e.evaluate("7-6"), 1);
-    EXPECT_EQ(e.evaluate("7/6"), 1.16666666667);
+    EXPECT_EQ(e.evaluate("7%6"), 1);
+    EXPECT_NEAR(e.evaluate("7/6"), 1.16667, 0.0001);
 }
 
 TEST(CalculatorTest, AdvancedArithmetic) {
@@ -40,8 +42,8 @@ TEST(CalculatorTest, AdvancedBinaryAlgebra) {
     Calculator e;
     EXPECT_EQ(e.evaluate("1 & 2 | 3"), 3);
     EXPECT_EQ(e.evaluate("1 & 2 | 7 | 6"), 7);
-    EXPECT_EQ(e.evaluate("1 & 2 | 7 & 6"), 7);
-    EXPECT_EQ(e.evaluate("7 & 6 | 1 & 2"), 7);
+    EXPECT_EQ(e.evaluate("1 & 2 | 7 & 6"), 6);
+    EXPECT_EQ(e.evaluate("7 & 6 | 1 & 2"), 6);
     EXPECT_EQ(e.evaluate("1 & (2 | 7) | 6"), 7);
     EXPECT_EQ(e.evaluate("1 & (2 | 7 & 6)"), 7);
     EXPECT_EQ(e.evaluate("7 & 6 | (1 & 2)"), 7);

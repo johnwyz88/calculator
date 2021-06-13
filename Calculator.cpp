@@ -8,6 +8,6 @@
 
 double Calculator::evaluate(const std::string &input) {
     std::vector<Token> tokens = tokenizer.tokenize(input);
-    Operator root = parser.parse(tokens);
-    return evaluator.evaluate(root);
+    std::unique_ptr<Operator> root = parser.parse(tokens);
+    return evaluator.evaluate(*root);
 }

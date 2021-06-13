@@ -5,5 +5,5 @@
 #include "Evaluator.h"
 
 double Evaluator::evaluate(const Operator& op) {
-    return 0;
+    return op.evaluate();
 }
