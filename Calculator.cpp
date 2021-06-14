@@ -27,3 +27,11 @@ double Calculator::eval(const std::vector<std::string>& lines) {
     }
     return result;
 }
+
+double Calculator::eval(const std::string& line, EvaluationContext* context) {
+    double result;
+    std::vector<Token> tokens = tokenizer.tokenize(line);
+    std::unique_ptr<Operator> root = parser.parse(tokens);
+    result = evaluator.evaluate(*root, context);
+    return result;
+}

@@ -9,7 +9,7 @@ public:
     GetVariableOperator(const std::string& value) : value(value) {}
     Value evaluate(EvaluationContext* context) const {
         std::optional<double> optionalValue = context->getVariable(value.stringVal);
-        if (!optionalValue) throw std::runtime_error("Variable doesn't exist.");
+        if (!optionalValue) return 0;
         return optionalValue.value();
     }
     int getPrecedence() const {

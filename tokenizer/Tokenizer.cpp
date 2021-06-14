@@ -25,12 +25,14 @@ std::vector<Token> Tokenizer::tokenize(const std::string& input) {
                 cur++;
             }
             result.emplace_back(TokenType::VALUE, input.substr(i, cur - i));
+            i = cur-1;
         } else {
             while (cur < input.size() && !OperatorRegistry::isOperator(input.substr(cur, 1))
                 && input[cur] != ' ') {
                 cur++;
             }
             result.emplace_back(TokenType::VARIABLE, input.substr(i, cur - i));
+            i = cur-1;
         }
     }
     return result;

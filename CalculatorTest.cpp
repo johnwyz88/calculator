@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "Calculator.h"
-#include <iostream>
 #include <fstream>
 
 TEST(CalculatorTest, BasicArithmetic) {
@@ -92,6 +91,6 @@ TEST(CalculatorTest, Assignment) {
 
 TEST(CalculatorTest, FileBasedTest) {
     Calculator e;
-    std::ifstream testFile("../resource/basic.rr");
+    std::ifstream testFile("../resource/basic.ru");
     EXPECT_EQ(e.evaluate(testFile), 2);
 }
