@@ -9,7 +9,8 @@
 
 enum TokenType {
     VALUE,
-    OPERATOR
+    OPERATOR,
+    VARIABLE
 };
 
 struct Token {

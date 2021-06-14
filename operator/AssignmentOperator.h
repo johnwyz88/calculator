@@ -11,8 +11,9 @@ public:
     AssignmentOperator(std::unique_ptr<Operator> left, std::unique_ptr<Operator> right, int precedence)
         : left(std::move(left)), right(std::move(right)), precedence(precedence) {}
     Value evaluate(EvaluationContext* context) const {
-        double val = right->evaluate();
-        context.registerVariable(left->evaluate().stringVal, val);
+        double val = right->evaluate(context).doubleVal;
+        context->registerVariable(left->evaluate(context).stringVal, val);
+        return {val};
     }
     int getPrecedence() const {
         return precedence;

@@ -7,10 +7,12 @@
 
 #include <string>
 
-union Value {
+struct Value {
     enum{DOUBLE, STRING} type;
-    double doubleVal;
-    std::string stringVal;
+    union {
+        double doubleVal;
+        std::string stringVal;
+    };
 
     Value(const Value& other) {
         if (other.type == DOUBLE) {
@@ -20,19 +22,9 @@ union Value {
         }
         type = other.type;
     }
-    Value(Value&& other) {
-        if (other.type == DOUBLE) {
-            doubleVal = other.doubleVal;
-        } else {
-            stringVal = std::move(other.stringVal);
-        }
-        type = other.type;
+    Value(double val) : type(DOUBLE), doubleVal(val) {
     }
-    Value(double val) : type(DOUBLE) {
-        doubleVal = val;
-    }
-    Value(std::string val) : type(STRING) {
-        stringVal = std::move(val);
+    Value(const std::string& val) : type(STRING), stringVal(val) {
     }
 
     ~Value() {

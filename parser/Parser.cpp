@@ -16,6 +16,9 @@
 #include "../operator/AndOperator.h"
 #include "../operator/OrOperator.h"
 #include "../operator/NotOperator.h"
+#include "../operator/AssignmentOperator.h"
+#include "../operator/SetVariableOperator.h"
+#include "../operator/GetVariableOperator.h"
 
 std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     std::stack<Token> operators;
@@ -23,6 +26,12 @@ std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     for (int i = 0; i < input.size(); i++) {
         if (input[i].type == TokenType::VALUE) {
             values.push(std::make_unique<ValueOperator>(input[i].value));
+        } else if (input[i].type == TokenType::VARIABLE) {
+            if (i + 1 < input.size() && input[i + 1].value == "=") {
+                values.push(std::make_unique<SetVariableOperator>(input[i].value));
+            } else {
+                values.push(std::make_unique<GetVariableOperator>(input[i].value));
+            }
         } else if (input[i].value == "(") {
             int open = 1;
             int j = i + 1;
@@ -101,7 +110,7 @@ void Parser::resolve(std::stack<Token>* operators,
         } else if (next.value == "=") {
             resolveBinary(operators, values,
                           [precedence](std::unique_ptr<Operator> left, std::unique_ptr<Operator> right) {
-                              return std::make_unique<OrOperator>(std::move(left), std::move(right), precedence);
+                              return std::make_unique<AssignmentOperator>(std::move(left), std::move(right), precedence);
                           });
 
         } else if (next.value == "^" || next.value == "!") {

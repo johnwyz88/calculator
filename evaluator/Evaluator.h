@@ -11,7 +11,7 @@
 class Evaluator {
 
 public:
-    double evaluate(const Operator& op);
+    double evaluate(const Operator& op, EvaluationContext* context);
 };
 
 
