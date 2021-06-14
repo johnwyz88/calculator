@@ -19,6 +19,8 @@
 #include "../operator/AssignmentOperator.h"
 #include "../operator/SetVariableOperator.h"
 #include "../operator/GetVariableOperator.h"
+#include "../operator/BinaryXorOperator.h"
+#include "../operator/ExponentOperator.h"
 
 std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     std::stack<Token> operators;
@@ -113,12 +115,22 @@ void Parser::resolve(std::stack<Token>* operators,
                               return std::make_unique<AssignmentOperator>(std::move(left), std::move(right), precedence);
                           });
 
-        } else if (next.value == "^" || next.value == "!") {
+        } else if (next.value == "!") {
             resolveUnary(operators, values,
                           [precedence](std::unique_ptr<Operator> arg) {
                               return std::make_unique<NotOperator>(std::move(arg), precedence);
                           });
 
+        } else if (next.value == "^") {
+            resolveBinary(operators, values,
+                          [precedence](std::unique_ptr<Operator> left, std::unique_ptr<Operator> right) {
+                              return std::make_unique<BinaryXorOperator>(std::move(left), std::move(right), precedence);
+                          });
+        } else if (next.value == "**") {
+            resolveBinary(operators, values,
+                          [precedence](std::unique_ptr<Operator> left, std::unique_ptr<Operator> right) {
+                              return std::make_unique<ExponentOperator>(std::move(left), std::move(right), precedence);
+                          });
         }
     }
 }

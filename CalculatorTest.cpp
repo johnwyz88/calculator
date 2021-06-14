@@ -30,6 +30,7 @@ TEST(CalculatorTest, AdvancedArithmetic) {
     EXPECT_NEAR(e.evaluate("7 / (7 + 6 * 6)"), 0.162791, 0.0001);
     EXPECT_EQ(e.evaluate("7 - (7 + 6) * 6"), -71);
     EXPECT_EQ(e.evaluate("-(7 - (7 + 6) * 6)"), 71);
+    EXPECT_EQ(e.evaluate("2**3"), 8);
 }
 
 TEST(CalculatorTest, BasicBinaryAlgebra) {
@@ -52,8 +53,8 @@ TEST(CalculatorTest, AdvancedBinaryAlgebra) {
 
 TEST(CalculatorTest, BasicBooleanAlgebra) {
     Calculator e;
-    EXPECT_EQ(e.evaluate("^1"), 0);
-    EXPECT_EQ(e.evaluate("^0"), 1);
+    EXPECT_EQ(e.evaluate("1^1"), 0);
+    EXPECT_EQ(e.evaluate("1^0"), 1);
     EXPECT_EQ(e.evaluate("!1"), 0);
     EXPECT_EQ(e.evaluate("!0"), 1);
     EXPECT_EQ(e.evaluate("1 && 0"), 0);

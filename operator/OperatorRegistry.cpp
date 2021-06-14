@@ -10,6 +10,7 @@
 std::unordered_map<std::string, int> OperatorRegistry::precedence = {
         { "(", 1 },
         { ")", 1 },
+        { "**", 2 },
         { "*", 3 },
         { "/", 3 },
         { "%", 3 },
