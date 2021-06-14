@@ -66,7 +66,8 @@ TEST(CalculatorTest, Assignment) {
     Calculator e;
     EXPECT_EQ(e.evaluate("y = 1"), 1);
     EXPECT_EQ(e.evaluate(
-            "y = 1\ny"),1);
+            "y = 1\n"
+            "y"),1);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "y"), 1);
