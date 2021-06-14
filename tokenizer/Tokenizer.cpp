@@ -21,7 +21,7 @@ std::vector<Token> Tokenizer::tokenize(const std::string& input) {
         } else if (input[i] == ' ') {
             continue;
         } else if (input[cur] >= '0' && input[cur] <= '9') {
-            while (cur < input.size() && input[cur] >= '0' && input[cur] <= '9') {
+            while (cur < input.size() && (input[cur] >= '0' && input[cur] <= '9' || input[cur] == '.')) {
                 cur++;
             }
             result.emplace_back(TokenType::VALUE, input.substr(i, cur - i));
