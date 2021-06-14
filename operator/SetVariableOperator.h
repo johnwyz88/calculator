@@ -4,10 +4,13 @@
 #ifndef SET_VARIABLE_OPERATOR_H
 #define SET_VARIABLE_OPERATOR_H
 
+#include <iostream>
+
 class SetVariableOperator : public Operator {
 public:
     SetVariableOperator(const std::string& value) : value(value) {}
     Value evaluate(EvaluationContext* context) const {
+        std::cout << "SetVariableOperator.evaluate starting.." << std::endl;
         return value;
     }
     int getPrecedence() const {

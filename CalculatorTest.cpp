@@ -68,6 +68,11 @@ TEST(CalculatorTest, Multiline) {
     EXPECT_EQ(e.evaluate("1\n2\n"), 2);
 }
 
+TEST(CalculatorTest, Assignment) {
+    Calculator e;
+    EXPECT_EQ(e.evaluate("y = 1"), 1);
+}
+
 TEST(CalculatorTest, DISABLED_Assignment) {
     Calculator e;
     EXPECT_EQ(e.evaluate("y = 1\n"), 1);

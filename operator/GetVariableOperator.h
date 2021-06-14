@@ -8,6 +8,7 @@ class GetVariableOperator : public Operator {
 public:
     GetVariableOperator(const std::string& value) : value(value) {}
     Value evaluate(EvaluationContext* context) const {
+        std::cout << "GetVariableOperator.evaluate starting.." << std::endl;
         std::optional<double> optionalValue = context->getVariable(value.stringVal);
         if (!optionalValue) return 0;
         return optionalValue.value();
