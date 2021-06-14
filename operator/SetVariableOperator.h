@@ -11,7 +11,7 @@ public:
     SetVariableOperator(const std::string& value) : value(value) {}
     Value evaluate(EvaluationContext* context) const {
         std::cout << "SetVariableOperator.evaluate starting.." << std::endl;
-        return value;
+        return value.stringVal;
     }
     int getPrecedence() const {
         return 1;
