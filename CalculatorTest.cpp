@@ -64,28 +64,28 @@ TEST(CalculatorTest, BasicBooleanAlgebra) {
 
 TEST(CalculatorTest, Assignment) {
     Calculator e;
-    EXPECT_EQ(e.evaluate("y = 1"), 1);
+    EXPECT_EQ(e.evaluate("y = 1\n"), 1);
     EXPECT_EQ(e.evaluate(
             "y = 1\n"
-            "y"),1);
+            "y\n"),1);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
-            "y"), 1);
+            "y\n"), 1);
     EXPECT_EQ(e.evaluate(
             "iewutoisjfgdpiy=1\n"
-            "iewutoisjfgdpiy"), 1);
+            "iewutoisjfgdpiy\n"), 1);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "x=2\n"
-            "y+x"), 3);
-    EXPECT_EQ(e.evaluate(
-            "y=1\n"
-            "x=2\n"
-            "y=2\n"
-            "y+x"), 4);
+            "y+x\n"), 3);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "x=2\n"
             "y=2\n"
-            "2*y+x-4"), 2);
+            "y+x\n"), 4);
+    EXPECT_EQ(e.evaluate(
+            "y=1\n"
+            "x=2\n"
+            "y=2\n"
+            "2*y+x-4\n"), 2);
 }
