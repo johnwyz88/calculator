@@ -10,7 +10,7 @@
 std::vector<std::string> Preprocessor::preprocess(const std::string &input) {
     std::vector<std::string> result;
     std::stringstream ss(input);
-    for (std::string line; std::getline(ss, line, '\n');) {
+    for (std::string line; std::getline(ss, line);) {
         std::cout << line << std::endl;
         result.push_back(line);
     }
