@@ -9,6 +9,7 @@
 #include <vector>
 #include <stack>
 #include <functional>
+#include <memory>
 #include "../operator/Operator.h"
 #include "../tokenizer/Token.h"
 
