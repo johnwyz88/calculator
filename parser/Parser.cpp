@@ -51,7 +51,6 @@ std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
         }
     }
     resolve(&operators, &values, 99);
-    std::cout << "Parser::parse completed.." << std::endl;
     return std::move(values.top());
 }
 
