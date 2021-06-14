@@ -10,9 +10,8 @@
 
 class Operator {
 public:
-    Operator() = default;
-    virtual Value evaluate(EvaluationContext* context) const {};
-    virtual int getPrecedence() const {};
+    virtual Value evaluate(EvaluationContext* context) const = 0;
+    virtual int getPrecedence() const = 0;
 };
 
 
