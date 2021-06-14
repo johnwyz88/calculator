@@ -3,6 +3,7 @@
 //
 
 #include <sstream>
+#include <istream>
 #include <iostream>
 #include "Preprocessor.h"
 
