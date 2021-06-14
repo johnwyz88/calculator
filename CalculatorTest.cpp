@@ -89,3 +89,9 @@ TEST(CalculatorTest, Assignment) {
             "y=2\n"
             "2*y+x-4\n"), 2);
 }
+
+TEST(CalculatorTest, FileBasedTest) {
+    Calculator e;
+    std::ifstream testFile("../resource/basic.ru");
+    EXPECT_EQ(e.evaluate(testFile), 2);
+}
