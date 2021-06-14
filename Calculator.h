@@ -15,7 +15,6 @@ class Calculator {
 public:
     Calculator() : preprocessor(Preprocessor()), tokenizer(Tokenizer()), parser(Parser()), evaluator(Evaluator()) {}
     double evaluate(const std::string& input);
-    double evaluate(std::ifstream& input);
     double eval(const std::string& lines, EvaluationContext* context);
 private:
     Preprocessor preprocessor;

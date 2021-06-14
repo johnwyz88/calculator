@@ -13,11 +13,6 @@ double Calculator::evaluate(const std::string &input) {
     return eval(lines);
 }
 
-double Calculator::evaluate(std::ifstream& input) {
-    std::vector<std::string> lines = preprocessor.preprocess(input);
-    return eval(lines);
-}
-
 double Calculator::eval(const std::vector<std::string>& lines) {
     double result;
     EvaluationContext context;

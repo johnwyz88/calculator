@@ -11,7 +11,6 @@
 class Preprocessor {
 public:
     std::vector<std::string> preprocess(const std::string& input);
-    std::vector<std::string> preprocess(std::ifstream& input);
 };
 
 
