@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <stack>
+#include <functional>
 #include "../operator/Operator.h"
 #include "../tokenizer/Token.h"
 
