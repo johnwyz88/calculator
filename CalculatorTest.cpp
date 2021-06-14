@@ -68,18 +68,28 @@ TEST(CalculatorTest, Assignment) {
     EXPECT_EQ(e.evaluate(
             "y = 1\ny"),1);
     EXPECT_EQ(e.evaluate(
-            "y=1\ny"), 1);
+            "y=1\n"
+            "y"), 1);
     EXPECT_EQ(e.evaluate(
-            "iewutoisjfgdpiy=1\niewutoisjfgdpiy"), 1);
+            "iewutoisjfgdpiy=1\n"
+            "iewutoisjfgdpiy"), 1);
     EXPECT_EQ(e.evaluate(
-            "y=1\nx=2\ny+x"), 3);
+            "y=1\n"
+            "x=2\n"
+            "y+x"), 3);
     EXPECT_EQ(e.evaluate(
-            "y=1\nx=2\ny=2\ny+x"), 4);
+            "y=1\n"
+            "x=2\n"
+            "y=2\n"
+            "y+x"), 4);
     EXPECT_EQ(e.evaluate(
-            "y=1\nx=2\ny=2\n2*y+x-4"), 2);
+            "y=1\n"
+            "x=2\n"
+            "y=2\n"
+            "2*y+x-4"), 2);
 }
 
-TEST(CalculatorTest, DISABLED_FileBasedTest) {
+TEST(CalculatorTest, FileBasedTest) {
     Calculator e;
     std::ifstream testFile("../resource/basic.ru");
     EXPECT_EQ(e.evaluate(testFile), 2);

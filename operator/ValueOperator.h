@@ -6,7 +6,7 @@
 
 class ValueOperator : public Operator {
 public:
-    ValueOperator(const std::string& value) : value({stod(value)}) {}
+    ValueOperator(const std::string& value) : value(stod(value)) {}
     Value evaluate(EvaluationContext* context) const {
         return value;
     }

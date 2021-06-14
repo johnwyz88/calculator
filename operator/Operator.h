@@ -12,6 +12,7 @@ class Operator {
 public:
     virtual Value evaluate(EvaluationContext* context) const = 0;
     virtual int getPrecedence() const = 0;
+    virtual ~Operator() = default;
 };
 
 
