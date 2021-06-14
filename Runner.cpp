@@ -38,10 +38,11 @@ void showHelp() {
 - -> Subtract
 | -> Binary Or
 & -> Binary And
-^ -> Not
+^ -> Xor
 ! -> Not
 && -> Boolean And
 || -> Boolean Or
 = -> Assignment
+** -> Exponent
 )" << std::endl;
 }

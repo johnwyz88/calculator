@@ -13,8 +13,9 @@ Here's the list of operators available:
 | - | Subtract |
 | \| | Binary Or |
 | & | Binary And |
-| ^ | Not |
+| ^ | Xor |
 | ! | Not |
 | && | Boolean And |
 | \|\| | Boolean Or |
 | = | Assignment |
+| ** | Exponent |
