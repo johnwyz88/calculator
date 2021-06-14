@@ -3,6 +3,7 @@
 //
 #include <vector>
 #include <sstream>
+#include <memory>
 
 #include "Calculator.h"
 #include "operator/Operator.h"

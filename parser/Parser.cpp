@@ -2,6 +2,7 @@
 // Created by Wang, John on 2021-06-12.
 //
 #include <stack>
+#include <memory>
 
 #include "Parser.h"
 #include "../operator/ValueOperator.h"
