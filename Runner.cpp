@@ -13,7 +13,7 @@ void showHelp();
 int main() {
     EvaluationContext context;
     Calculator calculator;
-    std::cout << "Welcome to RU! Type 'help' for list of available commands." << std::endl;
+    std::cout << "Welcome to RU! Type 'help' for list of available operators." << std::endl;
     while (true) {
         std::cout << ">>> ";
         std::string line;
