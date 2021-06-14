@@ -3,14 +3,12 @@
 //
 
 #include <vector>
-#include <iostream>
 #include <sstream>
 
 #include "Tokenizer.h"
 #include "../operator/OperatorRegistry.h"
 
 std::vector<Token> Tokenizer::tokenize(const std::string& input) {
-    std::cout << "Tokenizer::tokenize starting.." << std::endl;
     std::vector<Token> result;
     for (int i = 0; i < input.size(); i++) {
         int cur = i;
@@ -36,6 +34,5 @@ std::vector<Token> Tokenizer::tokenize(const std::string& input) {
             i = cur-1;
         }
     }
-    std::cout << "Tokenizer::tokenize completed.." << std::endl;
     return result;
 }
