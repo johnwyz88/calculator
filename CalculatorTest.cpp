@@ -62,46 +62,35 @@ TEST(CalculatorTest, BasicBooleanAlgebra) {
     EXPECT_EQ(e.evaluate("!1 && !0"), 0);
 }
 
-
-TEST(CalculatorTest, Multiline) {
-    Calculator e;
-    EXPECT_EQ(e.evaluate("1\n2\n"), 2);
-}
-
 TEST(CalculatorTest, Assignment) {
-    Calculator e;
-    EXPECT_EQ(e.evaluate("y = 1"), 1);
-}
-
-TEST(CalculatorTest, DISABLED_Assignment) {
     Calculator e;
     EXPECT_EQ(e.evaluate("y = 1\n"), 1);
     EXPECT_EQ(e.evaluate(
             "y = 1\n"
-            "y\n"),1);
+            "y"),1);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
-            "y\n"), 1);
+            "y"), 1);
     EXPECT_EQ(e.evaluate(
             "iewutoisjfgdpiy=1\n"
             "iewutoisjfgdpiy\n"), 1);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "x=2\n"
-            "y+x\n"), 3);
+            "y+x"), 3);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "x=2\n"
             "y=2\n"
-            "y+x\n"), 4);
+            "y+x"), 4);
     EXPECT_EQ(e.evaluate(
             "y=1\n"
             "x=2\n"
             "y=2\n"
-            "2*y+x-4\n"), 2);
+            "2*y+x-4"), 2);
 }
 
-TEST(CalculatorTest, DISABLED_FileBasedTest) {
+TEST(CalculatorTest, FileBasedTest) {
     Calculator e;
     std::ifstream testFile("../resource/basic.ru");
     EXPECT_EQ(e.evaluate(testFile), 2);

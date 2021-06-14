@@ -1,8 +1,6 @@
 //
 // Created by Wang, John on 2021-06-12.
 //
-#include <iostream>
-
 #include "Parser.h"
 #include "../operator/ValueOperator.h"
 #include "../operator/OperatorRegistry.h"
@@ -23,7 +21,6 @@
 #include "../operator/ExponentOperator.h"
 
 std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
-    std::cout << "Parser::parse starting.." << std::endl;
     std::stack<Token> operators;
     std::stack<std::unique_ptr<Operator>> values;
     for (int i = 0; i < input.size(); i++) {
