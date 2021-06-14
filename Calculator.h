@@ -15,11 +15,14 @@ class Calculator {
 public:
     Calculator() : preprocessor(Preprocessor()), tokenizer(Tokenizer()), parser(Parser()), evaluator(Evaluator()) {}
     double evaluate(const std::string& input);
+    double evaluate(std::ifstream& input);
 private:
     Preprocessor preprocessor;
     Tokenizer tokenizer;
     Parser parser;
     Evaluator evaluator;
+
+    double eval(const std::vector<std::string>& lines);
 };
 
 

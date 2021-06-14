@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 #include "Calculator.h"
+#include <iostream>
+#include <fstream>
 
 TEST(CalculatorTest, BasicArithmetic) {
     Calculator e;
@@ -63,7 +65,33 @@ TEST(CalculatorTest, BasicBooleanAlgebra) {
 TEST(CalculatorTest, Assignment) {
     Calculator e;
     EXPECT_EQ(e.evaluate("y = 1"), 1);
-    EXPECT_EQ(e.evaluate("y = 1\ny"), 1);
-    EXPECT_EQ(e.evaluate("y=1\ny"), 1);
-    EXPECT_EQ(e.evaluate("iewutoisjfgdpiy=1\niewutoisjfgdpiy"), 1);
+    EXPECT_EQ(e.evaluate(
+            "y = 1\n"
+            "y"),1);
+    EXPECT_EQ(e.evaluate(
+            "y=1\n"
+            "y"), 1);
+    EXPECT_EQ(e.evaluate(
+            "iewutoisjfgdpiy=1\n"
+            "iewutoisjfgdpiy"), 1);
+    EXPECT_EQ(e.evaluate(
+            "y=1\n"
+            "x=2\n"
+            "y+x"), 3);
+    EXPECT_EQ(e.evaluate(
+            "y=1\n"
+            "x=2\n"
+            "y=2\n"
+            "y+x"), 4);
+    EXPECT_EQ(e.evaluate(
+            "y=1\n"
+            "x=2\n"
+            "y=2\n"
+            "2*y+x-4"), 2);
+}
+
+TEST(CalculatorTest, FileBasedTest) {
+    Calculator e;
+    std::ifstream testFile("../resource/basic.rr");
+    EXPECT_EQ(e.evaluate(testFile), 2);
 }
