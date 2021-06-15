@@ -36,6 +36,8 @@ std::vector<Token> Tokenizer::tokenize(const std::string& input) {
                 int parenClose = input.find_first_of(')', i);
                 result.emplace_back(TokenType::FUNCTION, input.substr(i, parenClose - i + 1));
                 i = parenClose;
+            } else if (value == "return") {
+                i = cur-1;
             } else {
                 result.emplace_back(TokenType::VARIABLE, value);
                 i = cur-1;

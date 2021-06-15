@@ -104,8 +104,14 @@ TEST(CalculatorTest, FunctionTest) {
             "sqrt(4)"), 2);
 }
 
-TEST(CalculatorTest, FunctionFileTest) {
+TEST(CalculatorTest, SqrtFunctionFileTest) {
     Calculator e;
-    std::ifstream testFile("../resource/function.ru");
+    std::ifstream testFile("../resource/sqrt-function.ru");
     EXPECT_EQ(e.evaluate(testFile), 2);
+}
+
+TEST(CalculatorTest, SumFunctionFileTest) {
+    Calculator e;
+    std::ifstream testFile("../resource/sum-function.ru");
+    EXPECT_EQ(e.evaluate(testFile), 3);
 }

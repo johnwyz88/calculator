@@ -16,10 +16,8 @@ public:
         functionName = value.substr(0, parenOpen);
 
         std::stringstream ss(value.substr(parenOpen + 1, parenClose - parenOpen - 1));
-        for (std::string sig; ss >> sig;) {
-            args.push_back(sig);
-            if (ss.peek() == ',')
-                ss.ignore();
+        for (std::string arg; std::getline(ss, arg, ',');) {
+            args.push_back(arg);
         }
     }
     Value evaluate(EvaluationContext* context) const {

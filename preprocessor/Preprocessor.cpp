@@ -4,8 +4,10 @@
 
 #include <sstream>
 #include <fstream>
+
 #include "Preprocessor.h"
 #include "../function/FunctionRegistry.h"
+#include "../utils/StringUtils.h"
 
 std::vector<std::string> Preprocessor::preprocess(const std::string &input) {
     std::vector<std::string> result;
@@ -21,10 +23,9 @@ std::vector<std::string> Preprocessor::preprocess(const std::string &input) {
 
             std::vector<std::string> signature;
             std::stringstream ss(line.substr(parenOpen + 1, parenClose - parenOpen - 1));
-            for (std::string sig; ss >> sig;) {
+            for (std::string sig; std::getline(ss, sig, ',');) {
+                StringUtils::trim(sig);
                 signature.push_back(sig);
-                if (ss.peek() == ',')
-                    ss.ignore();
             }
 
             FunctionRegistry::registerFunctionSignature(functionName, signature);
