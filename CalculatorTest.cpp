@@ -95,3 +95,17 @@ TEST(CalculatorTest, FileBasedTest) {
     std::ifstream testFile("../resource/basic.ru");
     EXPECT_EQ(e.evaluate(testFile), 2);
 }
+
+TEST(CalculatorTest, FunctionTest) {
+    Calculator e;
+    EXPECT_EQ(e.evaluate(
+            "def sqrt(val):\n"
+            "    return val ** (1/2)\n"
+            "sqrt(4)"), 2);
+}
+
+TEST(CalculatorTest, FunctionFileTest) {
+    Calculator e;
+    std::ifstream testFile("../resource/function.ru");
+    EXPECT_EQ(e.evaluate(testFile), 2);
+}

@@ -2,7 +2,6 @@
 // Created by Wang, John on 2021-06-12.
 //
 
-#include <string>
 #include <unordered_map>
 
 #include "OperatorRegistry.h"
@@ -22,5 +21,5 @@ std::unordered_map<std::string, int> OperatorRegistry::precedence = {
         { "|", 10 },
         { "&&", 11 },
         { "||", 12 },
-        { "=", 14}
+        { "=", 14 }
 };

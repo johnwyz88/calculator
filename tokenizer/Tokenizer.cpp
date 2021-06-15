@@ -7,6 +7,7 @@
 
 #include "Tokenizer.h"
 #include "../operator/OperatorRegistry.h"
+#include "../function/FunctionRegistry.h"
 
 std::vector<Token> Tokenizer::tokenize(const std::string& input) {
     std::vector<Token> result;
@@ -30,8 +31,15 @@ std::vector<Token> Tokenizer::tokenize(const std::string& input) {
                 && input[cur] != ' ') {
                 cur++;
             }
-            result.emplace_back(TokenType::VARIABLE, input.substr(i, cur - i));
-            i = cur-1;
+            std::string value = input.substr(i, cur - i);
+            if (FunctionRegistry::isFunction(value)) {
+                int parenClose = input.find_first_of(')', i);
+                result.emplace_back(TokenType::FUNCTION, input.substr(i, parenClose - i + 1));
+                i = parenClose;
+            } else {
+                result.emplace_back(TokenType::VARIABLE, value);
+                i = cur-1;
+            }
         }
     }
     return result;

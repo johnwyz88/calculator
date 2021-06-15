@@ -19,6 +19,7 @@
 #include "../operator/GetVariableOperator.h"
 #include "../operator/BinaryXorOperator.h"
 #include "../operator/ExponentOperator.h"
+#include "../operator/FunctionOperator.h"
 
 std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     std::stack<Token> operators;
@@ -26,6 +27,8 @@ std::unique_ptr<Operator> Parser::parse(const std::vector<Token>& input) {
     for (int i = 0; i < input.size(); i++) {
         if (input[i].type == TokenType::VALUE) {
             values.push(std::make_unique<ValueOperator>(input[i].value));
+        } else if (input[i].type == TokenType::FUNCTION) {
+            values.push(std::make_unique<FunctionOperator>(input[i].value));
         } else if (input[i].type == TokenType::VARIABLE) {
             if (i + 1 < input.size() && input[i + 1].value == "=") {
                 values.push(std::make_unique<SetVariableOperator>(input[i].value));
