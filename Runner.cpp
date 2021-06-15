@@ -14,14 +14,25 @@ int main() {
     EvaluationContext context;
     Calculator calculator;
     std::cout << "Welcome to RU! Type 'help' for list of available operators." << std::endl;
+    std::string buffer;
     while (true) {
-        std::cout << ">>> ";
+        if (buffer.empty()) {
+            std::cout << ">>> ";
+        } else {
+            std::cout << "... ";
+        }
         std::string line;
         std::getline(std::cin, line);
         if (line == "help") {
             showHelp();
+        } else if (line.ends_with(':')) {
+            buffer.append(line + "\n");
+        } else if (!buffer.empty() && line.starts_with("    ")) {
+            buffer.append(line + "\n");
         } else {
-            std::cout << calculator.eval(line, &context) << std::endl;
+            buffer.append(line);
+            std::cout << calculator.evaluate(buffer, &context) << std::endl;
+            buffer = {};
         }
     }
 }
